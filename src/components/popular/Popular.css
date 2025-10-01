@@ -4,10 +4,9 @@
     align-items: center;
     gap: 10px;
     margin: 0 auto;
-    padding: 50px 20px; /* Add padding for spacing */
+    padding: 50px 20px; /* spacing */
     width: 100%;
     box-sizing: border-box;
-    /* Remove fixed height */
 }
 
 .popular h1 {
@@ -27,10 +26,14 @@
 
 .popular-item {
     margin-top: 50px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items in 1 row */
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 /* Tablet view */
@@ -39,7 +42,8 @@
         font-size: 40px;
     }
     .popular-item {
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr); /* 2 per row */
+        gap: 20px;
     }
 }
 
@@ -49,8 +53,8 @@
         font-size: 32px;
     }
     .popular-item {
-        flex-direction: column;
-        gap: 10px;
+        grid-template-columns: 1fr; /* 1 per row */
+        gap: 15px;
     }
 }
 
