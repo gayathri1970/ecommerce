@@ -1,0 +1,83 @@
+/* ========== ITEM CARD BASE ========== */
+.item {
+  width: 350px;
+  transition: transform 0.3s ease-in-out; /* smoother hover */
+}
+
+.item img {
+  width: 100%;        /* image fits container */
+  height: auto;       /* keeps aspect ratio */
+  object-fit: contain; /* full product visible */
+  border-radius: 8px; /* optional rounded corners */
+  display: block;     /* removes inline gap */
+}
+
+.item p {
+  margin: 6px 0px;
+}
+
+/* ========== PRICES ========== */
+.item-prices {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.item-price-new {
+  color: #374151;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.item-price-old {
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+/* Hover effect */
+.item:hover {
+  transform: scale(1.05);
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .item {
+    width: 280px;
+  }
+  .item-price-new,
+  .item-price-old {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .item {
+    width: 200px;
+  }
+  .item p {
+    font-size: 14px;
+  }
+  .item-price-new,
+  .item-price-old {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .item {
+    width: 160px;
+  }
+  .item p {
+    font-size: 12px;
+  }
+  .item-price-new,
+  .item-price-old {
+    font-size: 12px;
+  }
+}
