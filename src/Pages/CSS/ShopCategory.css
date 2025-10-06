@@ -1,8 +1,14 @@
+/* Add this to your main container to prevent content from being hidden under fixed nav */
+.shop-category {
+  padding-top: 130px; /* Adjust based on your nav height */
+}
+
 .shopcategory-banner {
-  display: flex;
-  margin: 30px auto;
+  display: block; /* Change from flex to block for images */
+  margin: 0 auto 30px; /* Remove top margin since we have padding on container */
   width: 82%;
   max-width: 1200px;
+  height: auto; /* Ensure proper aspect ratio */
 }
 
 .shopcategory-indexSort {
@@ -10,14 +16,33 @@
   margin: 0px 170px;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* allow wrapping on smaller screens */
+  flex-wrap: wrap;
   gap: 10px;
+  min-height: auto; /* Prevent collapsing */
+  overflow: visible; /* Ensure content is never hidden */
 }
 
 .shopcategory-sort {
   padding: 10px 20px;
   border-radius: 40px;
   border: 1px solid #888;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap; /* Prevent text breaking */
+  flex-shrink: 0; /* Prevent shrinking */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shopcategory-sort:hover {
+  background-color: #f5f5f5;
+}
+
+.shopcategory-indexSort p {
+  margin: 0;
+  flex: 1;
+  min-width: 200px; /* Ensure minimum width */
 }
 
 .shopcategory-indexSort p span {
@@ -27,9 +52,10 @@
 .shopcategory-products {
   margin: 20px 70px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 80px;
   gap: 20px;
+  overflow: visible; /* Ensure products are never hidden */
 }
 
 .shopcategory-loadmore {
@@ -45,50 +71,131 @@
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.shopcategory-loadmore:hover {
+  background: #ddd;
+  color: #333;
+  transform: scale(1.05);
 }
 
 /* ========================= */
 /* 📱 Responsive Media Queries */
 /* ========================= */
 
+/* Large Desktop */
+@media (max-width: 1440px) {
+  .shopcategory-indexSort {
+    margin: 0px 100px;
+  }
+  
+  .shopcategory-products {
+    margin: 20px 50px;
+  }
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
+  .shopcategory-indexSort {
+    margin: 0px 60px;
+  }
+  
   .shopcategory-products {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    grid-template-columns: repeat(3, 1fr);
     margin: 20px 40px;
+    row-gap: 60px;
   }
 }
 
 /* Mobile Landscape */
 @media (max-width: 768px) {
-  .shopcategory-indexSort {
-    margin: 0px 40px;
-    flex-direction: column;
-    align-items: flex-start;
+  .shop-category {
+    padding-top: 70px; /* Adjust for mobile nav if needed */
   }
-
+  
+  .shopcategory-banner {
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+  
+  .shopcategory-indexSort {
+    margin: 0px 30px;
+    flex-direction: row; /* Keep horizontal on medium screens */
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .shopcategory-indexSort p {
+    min-width: auto;
+    flex: none;
+  }
+  
+  .shopcategory-sort {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
   .shopcategory-products {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
-    margin: 20px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px 30px;
     row-gap: 40px;
+    gap: 15px;
+  }
+  
+  .shopcategory-loadmore {
+    margin: 100px auto;
+    width: 200px;
+    height: 60px;
+    font-size: 16px;
   }
 }
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
+  .shop-category {
+    padding-top: 60px;
+  }
+  
   .shopcategory-banner {
     width: 95%;
   }
-
-  .shopcategory-products {
-    grid-template-columns: 1fr; /* 1 per row */
-    margin: 10px;
-    row-gap: 30px;
+  
+  .shopcategory-indexSort {
+    margin: 0px 20px;
+    flex-direction: column; /* Stack vertically on very small screens */
+    align-items: flex-start;
+    gap: 10px;
   }
-
+  
+  .shopcategory-products {
+    grid-template-columns: 1fr;
+    margin: 15px 20px;
+    row-gap: 30px;
+    gap: 10px;
+  }
+  
   .shopcategory-loadmore {
+    margin: 80px auto;
     width: 180px;
     height: 55px;
     font-size: 16px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .shopcategory-indexSort {
+    margin: 0px 15px;
+  }
+  
+  .shopcategory-products {
+    margin: 15px;
+  }
+  
+  .shopcategory-sort {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }

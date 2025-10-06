@@ -3,12 +3,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 60px 20px;   /* use padding instead of fixed vh height */
+  padding: 60px 20px;
 }
 
 .relatedproducts h1 {
   color: #171717;
-  font-size: clamp(28px, 5vw, 50px); /* responsive font size */
+  font-size: clamp(28px, 5vw, 50px);
   font-weight: 600;
   text-align: center;
 }
@@ -22,17 +22,32 @@
 
 .relatedproducts-item {
   margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;          /* ✅ allow wrapping */
-  justify-content: center;  /* ✅ center items */
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ✅ 4 items per row */
+  gap: 25px;
   width: 100%;
+  max-width: 1200px; /* keeps layout centered */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 📱 Mobile screens */
+/* Tablet view */
+@media (max-width: 1024px) {
+  .relatedproducts-item {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 20px;
+  }
+
+  .relatedproducts h1 {
+    font-size: 40px;
+  }
+}
+
+/* Mobile view */
 @media (max-width: 768px) {
   .relatedproducts-item {
-    gap: 20px;
+    grid-template-columns: 1fr; /* stack */
+    gap: 15px;
   }
 
   .relatedproducts h1 {
@@ -40,13 +55,8 @@
   }
 }
 
-/* 📱 Small phones */
+/* Small phones */
 @media (max-width: 480px) {
-  .relatedproducts-item {
-    flex-direction: column;  /* stack items vertically */
-    align-items: center;
-  }
-
   .relatedproducts h1 {
     font-size: 26px;
   }
